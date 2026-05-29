@@ -3,28 +3,28 @@ export const seo = ({
   description,
   image,
 }: {
-  title: string
-  description?: string
-  image?: string
+  title: string;
+  description?: string;
+  image?: string;
 }) => {
   const tags = [
     { title },
-    { name: 'description', content: description },
-    { name: 'twitter:title', content: title },
-    { name: 'twitter:description', content: description },
-    { name: 'twitter:creator', content: '@laurathiel' },
-    { name: 'twitter:site', content: '@laurathiel' },
-    { name: 'og:type', content: 'website' },
-    { name: 'og:title', content: title },
-    { name: 'og:description', content: description },
+    { name: "description", content: description },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:creator", content: "@laurathiel" },
+    { name: "twitter:site", content: "@laurathiel" },
+    { name: "og:type", content: "website" },
+    { name: "og:title", content: title },
+    { name: "og:description", content: description },
     ...(image
       ? [
-          { name: 'twitter:image', content: image },
-          { name: 'twitter:card', content: 'summary_large_image' },
-          { name: 'og:image', content: image },
+          { name: "twitter:image", content: image },
+          { name: "twitter:card", content: "summary_large_image" },
+          { name: "og:image", content: image },
         ]
       : []),
-  ]
+  ];
 
-  return tags
-}
+  return tags;
+};
