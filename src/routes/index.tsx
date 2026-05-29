@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -7,9 +7,15 @@ export const Route = createFileRoute('/')({
 
 function Home() {
   const [phase, setPhase] = useState<'idle' | 'poof' | 'gone'>('idle')
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   const handleClick = () => {
     if (phase === 'idle') {
+      if (!audioRef.current) {
+        audioRef.current = new Audio('/poof.mp3')
+      }
+      audioRef.current.currentTime = 0
+      audioRef.current.play()
       setPhase('poof')
       setTimeout(() => setPhase('gone'), 500)
       setTimeout(() => setPhase('idle'), 1800)
